@@ -1,0 +1,14 @@
+version: 2
+models:
+  - name: nba_player_info
+    columns:
+      - name: player_id
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+      - name: last_name
+      - name: team_name
+      - name: position
+      - name: height
+      - name: weight
