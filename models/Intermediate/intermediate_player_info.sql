@@ -1,16 +1,33 @@
-with player_info as (
-    select *
-    from {{ ref('nba_player_info') }}
+WITH player_info AS (
+    SELECT 
+        *
+    FROM 
+        {{ ref('nba_player_info') }}
 ),
 
-player_salaries as (
-    select player_id, salary, season
-    from {{ ref('nba_player_salaries') }}
-)
+player_salaries AS (
+    SELECT 
+        player_id, 
+        salary, 
+        season
+    FROM 
+        {{ ref('nba_player_salaries') }}
+), 
 
-select 
+joined AS (
+
+SELECT 
     pi.*,
     ps.salary,
     ps.season
-from player_info pi
-left join player_salaries ps on pi.player_id = ps.player_id
+FROM 
+    player_info pi
+LEFT JOIN 
+    player_salaries ps ON pi.player_id = ps.player_id
+)
+
+
+SELECT 
+    * 
+FROM 
+    joined
