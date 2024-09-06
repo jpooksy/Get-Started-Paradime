@@ -48,12 +48,16 @@ min_alias_length = 3
 # formatting for any of these syntax elements then set them to "upper".
 # See https://stackoverflow.com/questions/608196/why-should-i-capitalize-my-sql-keywords-is-there-a-good-reason
 [sqlfluff:rules:capitalisation.keywords]
-capitalisation_policy = lower
+capitalisation_policy = upper
+
 [sqlfluff:rules:capitalisation.identifiers]
-capitalisation_policy = lower
-[sqlfluff:rules:capitalisation.functions]
 extended_capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+extended_capitalisation_policy = upper
+
 [sqlfluff:rules:capitalisation.literals]
 capitalisation_policy = lower
+
 [sqlfluff:rules:capitalisation.types]
-extended_capitalisation_policy = lower
+extended_capitalisation_policy = upper
