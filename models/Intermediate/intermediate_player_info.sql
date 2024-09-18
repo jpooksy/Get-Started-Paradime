@@ -25,3 +25,5 @@ joined as (
         player_salaries as ps
         on pi.player_id = ps.player_id
 )
+
+select * from joined
