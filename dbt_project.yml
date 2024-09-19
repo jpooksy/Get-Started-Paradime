@@ -17,5 +17,13 @@ clean-targets:
 
 models:
   demo_project:
-    example:
+    sources:
+      +schema: staging
       +materialized: view
+    intermediate: 
+      +schema: intermediate
+      +materialized: view
+  elementary:
+    +schema: "elementary"
+    ## To disable elementary for dev, uncomment this:
+    # enabled: "{{ target.name in ['prod','analytics'] }}"
