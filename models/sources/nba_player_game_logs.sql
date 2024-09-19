@@ -1,10 +1,10 @@
 WITH source AS (
     SELECT 
-        *
+        *,
+        {{ random_timestamp() }} AS game_timestamp -- use the macro here to generate random timestamps
     FROM 
         {{ source('PUBLIC', 'PLAYER_GAME_LOGS') }}
 ),
-
 
 renamed AS (
     SELECT
@@ -39,7 +39,8 @@ renamed AS (
         pts AS points,
         plus_minus AS plus_minus,
         season,
-        game_type
+        game_type,
+        game_timestamp -- keep the generated timestamp
     FROM 
         source
 )
