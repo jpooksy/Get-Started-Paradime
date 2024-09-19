@@ -7,4 +7,9 @@ sources:
     tables:
       - name: COMMON_PLAYER_INFO
       - name: PLAYER_SALARIES
-      
+      - name: PLAYER_GAME_LOGS
+      - name: GAMES
+      - name: TEAMS
+      - name: TEAM_STATS
+      - name: TEAM_SPEND
+ 

@@ -1,6 +1,6 @@
 WITH source AS (
     SELECT 
-        person_id AS player_id,
+        player_id,
         player_name,
         salary,
         season
