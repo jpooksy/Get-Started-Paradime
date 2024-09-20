@@ -14,17 +14,8 @@ models:
       - name: weight
   - name: nba_player_game_logs
     tests:
-    - elementary.freshness_anomalies:
-        timestamp_column: loaded_at_dttm
-        time_bucket:
-          period: day
-          count: 1
-        training_period:
-          period: day
-          count: 7  # Reduce training period to focus on recent data
-        detection_period:
-          period: day
-          count: 3  # Increase detection period to broaden comparison
-        anomaly_sensitivity: 1
-        severity: warn
-        tags: ["elementary"]
+      - elementary.freshness_anomalies:
+          timestamp_column: loaded_at_dttm # Mandatory
+          time_bucket: # Daily by default
+            period: day
+            count: 1
