@@ -15,7 +15,13 @@ models:
   - name: nba_player_game_logs
     tests:
       - elementary.freshness_anomalies:
-          timestamp_column: loaded_at_dttm # Mandatory
-          time_bucket: # Daily by default
+          timestamp_column: loaded_at_dttm  # Use the updated column
+          time_bucket:
             period: day
-            count: 1
+            count: 1  # Daily buckets
+          training_period:
+            period: day
+            count: 30  # Cover the past 30 days, even though it's older data
+          detection_period:
+            period: day
+            count: 7  # Detect anomalies within the last 7 days
