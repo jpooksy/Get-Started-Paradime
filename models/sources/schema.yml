@@ -12,19 +12,23 @@ models:
       - name: position
       - name: height
       - name: weight
+
   - name: nba_player_game_logs
+    config:
+      elementary:
+        timestamp_column: "loaded_at_dttm"
     tests:
-    - elementary.freshness_anomalies:
-        timestamp_column: loaded_at_dttm
-        time_bucket:
-          period: day
-          count: 1
-        training_period:
-          period: day
-          count: 7  # Reduce training period to focus on recent data
-        detection_period:
-          period: day
-          count: 3  # Increase detection period to broaden comparison
-        anomaly_sensitivity: 1
-        severity: warn
-        tags: ["elementary"]
+      - elementary.volume_anomalies
+
+    columns:
+      - name: mins_played
+        description: number of mins played in a given game by a player
+        tests:
+          - elementary.column_anomalies:
+              config:
+                severity: warn
+              tags: ["column_anomalies"]
+              column_anomalies: 
+                - zero_count
+              timestamp_column: "loaded_at_dttm"
+
