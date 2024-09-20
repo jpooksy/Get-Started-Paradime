@@ -19,7 +19,7 @@ models:
   demo_project:
     sources:
       +schema: staging
-      +materialized: view
+      +materialized: table
     intermediate: 
       +schema: intermediate
       +materialized: view
