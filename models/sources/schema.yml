@@ -12,23 +12,16 @@ models:
       - name: position
       - name: height
       - name: weight
-
   - name: nba_player_game_logs
-    config:
-      elementary:
-        timestamp_column: "loaded_at_dttm"
     tests:
-      - elementary.volume_anomalies
-
-    columns:
-      - name: mins_played
-        description: number of mins played in a given game by a player
-        tests:
-          - elementary.column_anomalies:
-              config:
-                severity: warn
-              tags: ["column_anomalies"]
-              column_anomalies: 
-                - zero_count
-              timestamp_column: "loaded_at_dttm"
-
+      - elementary.freshness_anomalies:
+          timestamp_column: loaded_at_dttm  # Use the updated column
+          time_bucket:
+            period: day
+            count: 1  # Daily buckets
+          training_period:
+            period: day
+            count: 30  # Cover the past 30 days, even though it's older data
+          detection_period:
+            period: day
+            count: 7  # Detect anomalies within the last 7 days
