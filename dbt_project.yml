@@ -15,6 +15,9 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+flags:
+  source_freshness_run_project_hooks: True
+
 models:
   demo_project:
     sources:

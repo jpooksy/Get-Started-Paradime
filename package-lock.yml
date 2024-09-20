@@ -7,4 +7,6 @@ packages:
     version: 0.10.3
   - package: elementary-data/elementary
     version: 0.16.1
-    # check latest package version on https://hub.getdbt.com/elementary-data/element
+  - package: calogica/dbt_date
+    version: 0.10.1
+sha1_hash: 37eb0151a7945296e8f3c1e7538e113438f15fb4
