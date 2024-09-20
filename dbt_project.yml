@@ -19,10 +19,10 @@ models:
   demo_project:
     sources:
       +schema: staging
-      +materialized: view
+      +materialized: table
     intermediate: 
       +schema: intermediate
-      +materialized: view
+      +materialized: table
   elementary:
     +schema: "elementary"
     ## To disable elementary for dev, uncomment this:
