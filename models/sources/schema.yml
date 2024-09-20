@@ -19,3 +19,16 @@ models:
           time_bucket: # Daily by default
             period: day
             count: 1
+      - elementary.all_columns_anomalies:
+          tags: ["elementary"]
+      - elementary.volume_anomalies:
+          fail_on_zero: false
+          tags: ["elementary"]
+      - elementary.dimension_anomalies:
+          dimensions: ['player_id', 'team_id', 'game_id']
+          tags: ["elementary"]
+      - elementary.event_freshness_anomalies:
+          event_timestamp_column: game_date
+          update_timestamp_column: loaded_at_dttm
+          tags: ["elementary"]
+
