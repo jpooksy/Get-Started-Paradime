@@ -15,7 +15,7 @@ models:
   - name: nba_player_game_logs
     tests:
     - elementary.freshness_anomalies:
-        column_name: timestamp_column
+        timestamp_column: loaded_at_dttm
         time_bucket:
           period: day
           count: 1
