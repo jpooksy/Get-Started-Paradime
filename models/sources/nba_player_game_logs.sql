@@ -1,7 +1,6 @@
 WITH source AS (
     SELECT 
-        *,
-        {{ random_timestamp() }} AS loaded_at_dttm -- use the macro here to generate random timestamps
+        *
     FROM 
         {{ source('PUBLIC', 'PLAYER_GAME_LOGS') }}
 ),
