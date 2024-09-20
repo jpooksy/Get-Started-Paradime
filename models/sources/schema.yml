@@ -12,23 +12,10 @@ models:
       - name: position
       - name: height
       - name: weight
-
   - name: nba_player_game_logs
-    config:
-      elementary:
-        timestamp_column: "loaded_at_dttm"
     tests:
-      - elementary.volume_anomalies
-
-    columns:
-      - name: mins_played
-        description: number of mins played in a given game by a player
-        tests:
-          - elementary.column_anomalies:
-              config:
-                severity: warn
-              tags: ["column_anomalies"]
-              column_anomalies: 
-                - zero_count
-              timestamp_column: "loaded_at_dttm"
-
+      - elementary.freshness_anomalies:
+          timestamp_column: loaded_at_dttm # Mandatory
+          time_bucket: # Daily by default
+            period: day
+            count: 1
